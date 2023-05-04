@@ -10,7 +10,7 @@ app = typer.Typer()
 
 
 @app.command()
-def rep_max(weight: int, reps: int):
+def rep_max(weight: float, reps: int):
     weight = int(weight)
     reps = int(reps)
 
@@ -24,6 +24,21 @@ def rep_max(weight: int, reps: int):
     print("-----------------------------------")
     print("One rep Maxes are")
     print(f"Brycki = {brycki:.2f}\nEpley = {epley:.2f}\nOConner = {oConner:.2f}\n")
+
+@app.command()
+def calories_burned_per_min(mets_value: float, kg: float):
+    """
+    Takes in a MET value and body weight in KG's. Calculates how many 
+    calories burned in 15, 30, and 60 mins.
+    METS is a value representing how hard you are training during that time frame
+    https://marathonhandbook.com/what-are-mets/
+    """
+    calories_burned = (mets_value * 3.5 * kg) / 200
+
+    print(f"\nCalories burned per minute: {calories_burned}\n")
+    print(f"Calories burned per 15 minutes: {calories_burned*15}\n")
+    print(f"Calories burned per 30 minute: {calories_burned*30}\n")
+    print(f"Calories burned per 1 hour: {calories_burned*60}\n")
 
 
 @app.command()
