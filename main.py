@@ -11,8 +11,6 @@ app = typer.Typer()
 
 @app.command()
 def rep_max(weight: float, reps: int):
-    weight = int(weight)
-    reps = int(reps)
 
     brycki = weight * (36 / (37 - reps))
 
